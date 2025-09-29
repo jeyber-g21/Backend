@@ -70,7 +70,14 @@ const getLastTwoArticles = async (req, res) => {
 const updateArticle = async (req, res) => {
   try {
     const articleId = req.params.id;
-    const updateData = req.body;
+    const updateData = {
+      title: req.body.title,
+      content: req.body.content,
+    };
+
+    if (req.file) {
+      updateData.image = req.file.filename; // o la URL donde la guardes
+    }
 
     const updatedArticle = await Article.findByIdAndUpdate(
       articleId,

@@ -12,7 +12,11 @@ router.get("/articles/last", ArticleController.getLastTwoArticles);
 router.get("/search/:title", ArticleController.searchTitle);
 router.post("/upload", upload.single("image"), ArticleController.uploadImage);
 router.get("/articles/:id", ArticleController.getArticleById);
-router.put("/articles/:id", ArticleController.updateArticle);
+router.put(
+  "/articles/:id",
+  upload.single("image"),
+  ArticleController.updateArticle
+);
 router.delete("/articles/:id", ArticleController.deleteArticle);
 
 module.exports = router;
