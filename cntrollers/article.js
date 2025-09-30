@@ -57,7 +57,7 @@ const getLastTwoArticles = async (req, res) => {
   try {
     const articles = await Article.find()
       .sort({ createdAt: -1 }) // Ordena del más reciente al más antiguo
-      .limit(2); // Solo los dos primeros
+      .limit(3); // Solo los dos primeros
 
     res.status(200).json(articles);
   } catch (error) {
